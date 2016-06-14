@@ -1,12 +1,12 @@
 package annotations.io.classfile;
 
 /*>>>
-import afu.org.checkerframework.checker.nullness.qual.*;
+import org.checkerframework.checker.nullness.qual.*;
 */
 
 import java.io.*;
 
-import afu.plume.*;
+import plume.*;
 
 import com.sun.tools.javac.main.CommandLine;
 
@@ -22,7 +22,7 @@ import annotations.io.IndexFileWriter;
 public class ClassFileReader {
 
   public static final String INDEX_UTILS_VERSION
-    = "Annotation File Utilities v3.6.27";
+    = "Annotation File Utilities v3.6.29";
 
   @Option("-h print usage information and exit")
   public static boolean help = false;

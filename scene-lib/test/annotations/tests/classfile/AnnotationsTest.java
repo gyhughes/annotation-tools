@@ -1,7 +1,7 @@
 package annotations.tests.classfile;
 
 /*>>>
-import afu.org.checkerframework.checker.nullness.qual.*;
+import org.checkerframework.checker.nullness.qual.*;
 */
 
 import java.io.File;
@@ -342,6 +342,22 @@ public class AnnotationsTest extends TestCase {
 //      testAgainstIndexFile(nameIndex(s + ".jaif"), nameClass(s+".class"));
 //      testAgainstClass(nameIndex(s + ".jaif"), nameClass(s));
 //    }
+  }
+
+  /**
+   * Runs a test on class files for package-info.
+   */
+  public void testcPackage() {
+    testAgainstClass(nameIndex("package-info.jaif"),
+        nameClass("package-info"));
+  }
+
+  /**
+   * Runs a test on index files for package-info.
+   */
+  public void testiPackage() {
+    testAgainstIndexFile(nameIndex("package-info.jaif"),
+        nameClass("package-info.class"));
   }
 
   /**

@@ -1,7 +1,7 @@
 package annotations.io;
 
 /*>>>
-import afu.org.checkerframework.checker.nullness.qual.*;
+import org.checkerframework.checker.nullness.qual.*;
 */
 
 import static java.io.StreamTokenizer.TT_EOF;
@@ -60,9 +60,9 @@ import annotations.field.EnumAFT;
 import annotations.field.ScalarAFT;
 import annotations.util.coll.VivifyingMap;
 
-import afu.plume.ArraysMDE;
-import afu.plume.FileIOException;
-import afu.plume.Pair;
+import plume.ArraysMDE;
+import plume.FileIOException;
+import plume.Pair;
 
 import type.ArrayType;
 import type.BoundedType;
@@ -1496,8 +1496,10 @@ public final class IndexFileParser {
                 matchChar(':');
             } else {
                 pkg = expectQualifiedName();
-                AElement p = scene.packages.vivify(pkg);
+                //AElement p = scene.packages.vivify(pkg);
+                AClass p = scene.classes.vivify(pkg + ".package-info");
                 expectChar(':');
+                p = scene.classes.vivify(pkg + ".package-info");
                 parseAnnotations(p);
             }
 

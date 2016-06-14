@@ -4,7 +4,7 @@
 package annotations.io.classfile;
 
 /*>>>
-import afu.org.checkerframework.checker.nullness.qual.*;
+import org.checkerframework.checker.nullness.qual.*;
 */
 
 import java.io.File;
@@ -248,6 +248,10 @@ extends EmptyVisitor {
       } catch (ClassNotFoundException e) {
         System.out.printf("Could not find class: %s%n", e.getMessage());
         printClasspath();
+        if (annoTypeName.contains("+")) {
+          return Annotations.createValueAnnotationDef(annoTypeName,
+              Annotations.noAnnotations, BasicAFT.forType(int.class));
+        }
         throw new Error(e);
       }
 

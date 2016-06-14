@@ -74,7 +74,7 @@ import annotator.Main;
 import annotator.scanner.CommonScanner;
 import annotator.specification.IndexFileSpecification;
 
-import afu.plume.Pair;
+import plume.Pair;
 
 import type.DeclaredType;
 import type.Type;
@@ -171,7 +171,7 @@ public class TreeFinder extends TreeScanner<Void, List<Insertion>> {
    * character at or after the given position.  (Assumes position is not
    * inside a comment.)
    *
-   * {@see #getNthInstanceBetween(char, int, int, int, CompilationUnitTree)}
+   * @see #getNthInstanceBetween(char, int, int, int, CompilationUnitTree)
    */
   private int getFirstInstanceAfter(char c, int i) {
     return getNthInstanceInRange(c, i, Integer.MAX_VALUE, 1);
@@ -957,6 +957,10 @@ loop:
   /**
    * Scans this tree, using the list of insertions to generate the source
    * position to insertion text mapping.
+   * <p>
+   * When a match is found, this routine removes the insertion from p and
+   * adds it to the insertions map as a value, with a key that is a pair.
+   * On return, p contains only the insertions for which no match was found.
    */
   @Override
   public Void scan(Tree node, List<Insertion> p) {
